@@ -12,10 +12,11 @@ function Alert(props) {
     alignItems: "center", 
     paddingLeft: "5%",
     backgroundColor:bgcolor,
+    
 }
 
     return (
-        <div style={{ height: '10px' }}>
+        <div >
             {/* className={`alert alert-${props.alert.type} alert-dismissible fade show`} */}
             {props.alert && <div className='d-flex' style={styles} >
                 {props.alert.msg}
