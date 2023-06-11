@@ -1,7 +1,7 @@
 import NoteContext from "./noteContext";
 import { useState } from "react";
 
-const host = "http://localhost:1708";
+const host = "https://smart-notes-backend.onrender.com";
 
 const NoteState = (props) => {
  

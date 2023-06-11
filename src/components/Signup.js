@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { useNavigate } from "react-router-dom";
 const Signup = (props) => {
     const navigate = useNavigate();
-    const host = "http://localhost:1708";
+    const host = "https://smart-notes-backend.onrender.com";
     
     const [credentials, setCredentials] = useState({ name:"",email: "", password: "",cpassword:"" })
 

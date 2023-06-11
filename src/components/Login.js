@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
 
-    const host = "http://localhost:1708";
+    const host = "https://smart-notes-backend.onrender.com";
     const [credentials, setCredentials] = useState({email:"",password:""})
     const navigate = useNavigate();
     
