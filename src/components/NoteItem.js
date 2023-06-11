@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import noteContext from '../context/notes/noteContext'
 
 
-export default function NoteItem({ note }) {
+export default function NoteItem({ note,updateNote,showAlert }) {
     const context = useContext(noteContext)
     const { deleteNote } = context;
 
     const handleDelete = (id) => {
         deleteNote(id);
+       showAlert("Note Deleted Successfully","success")
     }
     return (
         <div className='col-md-3 my-3 '>
@@ -20,7 +21,7 @@ export default function NoteItem({ note }) {
                     <div className="d-flex ">
                     <i className="fa-solid fa-trash  fa-xs" onClick={()=>{ handleDelete(note._id);}}></i>
                     <div className="mx-auto"></div>
-                    <i className="fa-solid fa-pen-to-square fa-xs" ></i>
+                    <i className="fa-solid fa-pen-to-square fa-xs"  onClick={()=>{updateNote(note)}}></i>
                     </div>
                     
                     

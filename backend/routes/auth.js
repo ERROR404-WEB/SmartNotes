@@ -20,14 +20,16 @@ router.post('/createUser', [
 ], async (req, res) => {
 
     try {
+        let success=true;
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            success=false;
+            return res.status(400).json({success:success, errors: errors.array() });
         }
         let user = await User.findOne({ email: req.body.email });
         if (user) {
-
-            return res.status(404).json({ error: "email already exists" })
+            success=false;
+            return res.status(404).json({ success:success ,error: "email already exists" })
 
         }
         else {
@@ -45,14 +47,15 @@ router.post('/createUser', [
                 }
             }
             var authToken = jwt.sign(data, JWT_SECRET_KEY);
-            res.json({ authToken });
+            res.json({ success , authToken });
         }
 
 
     }
     catch (err) {
         console.error(err.message);
-        res.status(500).send("Internal Error Occured ");
+        
+        res.status(500).send( {error:"Internal Error Occured "});
     }
 
 })
@@ -65,22 +68,26 @@ router.post('/login', [
     body('password', 'Password should not be NULL').exists()
 ], async (req, res) => {
 
-
+    let success=true;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+        success=false;
+        return res.status(400).json({ success:success,errors: errors.array() });
+        
     }
     else {
         const { email, password } = req.body;
         try {
             let user = await User.findOne({ email });
             if (!user) {
-                return res.status(400).json({ error: "Enter Correct Credentials" });
+                success=false;
+                return res.status(400).json({ success:success,error: "Enter Correct Credentials" });
             }
 
             const passwordCompare = await bcrypt.compare(password, user.password);
             if (!passwordCompare) {
-                return res.status(400).json({ error: "Enter Correct Credentials" });
+                success=false;
+                return res.status(400).json({ success:success,error: "Enter Correct Credentials" });
             }
 
 
@@ -89,8 +96,10 @@ router.post('/login', [
                     id: user.id
                 }
             }
+            success=true;
             var authToken = jwt.sign(data, JWT_SECRET_KEY);
-            res.json({ authToken });
+            res.json({ success,authToken });
+
         }
         catch (err) {
             console.error(err.message);

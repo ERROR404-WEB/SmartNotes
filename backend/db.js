@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const mongoURI = "mongodb://0.0.0.0:27017/SmartNotes";
+
+const mongoURI = "mongodb+srv://error404:error404@cluster0.6ke0hoy.mongodb.net/" ;
 
 
 const connectToMongo = async  ()=>{
