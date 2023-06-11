@@ -49,7 +49,7 @@ const Login = (props) => {
                         <input type="password" className="form-control" id="password" name="password" onChange={onChange} />
                     </div>
 
-                    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
+                    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Login</button>
                 </form>
             </div>
         </div>

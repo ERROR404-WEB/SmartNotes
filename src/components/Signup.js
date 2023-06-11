@@ -63,7 +63,7 @@ const Signup = (props) => {
                         <input type="password" className="form-control" id="cpassword" name="cpassword" value={credentials.cpassword} onChange={onChange} minLength={5} />
                     </div>
 
-                    <button type="submit" className="btn btn-primary" onClick={handleClick}>Submit</button>
+                    <button type="submit" className="btn btn-primary" onClick={handleClick}>Signup</button>
                 </form>
             </div>
         </div>
