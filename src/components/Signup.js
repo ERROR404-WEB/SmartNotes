@@ -10,6 +10,7 @@ const Signup = (props) => {
         setCredentials({...credentials,[e.target.name]:e.target.value})
     }
     const handleClick = async (e)=>{
+        props.updateProgress(50);
         e.preventDefault();
         if(credentials.password!==credentials.cpassword){
             props.showAlert("Password and Confirm Password should be same","danger")
@@ -25,10 +26,11 @@ const Signup = (props) => {
         })
         const json = await response.json()
         console.log(json)
+        props.updateProgress(100);
         if(json.success){
             // Save the auth token and redirect
             localStorage.setItem('token',json.authToken)
-            navigate('/');
+            navigate('/mynotes');
             props.showAlert("Account Created Successfully","success");
         }
         else{
@@ -41,7 +43,8 @@ const Signup = (props) => {
     }
     return (
         <div>
-            <div className="container my-5" style={{ width: "80Vmin" }}>
+            <h5 className='text-center mt-2'>Signup</h5>
+            <div className="container mt-5" style={{ width: "80Vmin" }}>
                 <form>
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Name</label>

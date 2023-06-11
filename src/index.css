@@ -2,3 +2,9 @@
     cursor:pointer;
     
 }
+
+form{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.201);
+    border-radius: 10px;
+    padding:20px ;
+}

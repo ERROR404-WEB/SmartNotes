@@ -10,6 +10,7 @@ const Login = (props) => {
     
 
     const handleSubmit = async (e)=>{
+        props.updateProgress(50);
         e.preventDefault()
             const response = await fetch(`${host}/api/auth/login`,{
                 method:"POST",
@@ -18,11 +19,12 @@ const Login = (props) => {
                 },
                 body:JSON.stringify({email:credentials.email,password:credentials.password})
     })
+    props.updateProgress(100);
         const json = await response.json()
         if(json.success){
             // Save the auth token and redirect
             localStorage.setItem('token',json.authToken)
-            navigate('/');  
+            navigate('/mynotes');  
             props.showAlert("Logged in Successfully","success");
         }
         else{ 
@@ -35,6 +37,7 @@ const Login = (props) => {
     }
     return (
         <div>
+            <h5 className='text-center mt-2'>login</h5>
             <div className="container my-5" style={{width:"80vmin"}}>
                 <form>
                     <div className="mb-3">

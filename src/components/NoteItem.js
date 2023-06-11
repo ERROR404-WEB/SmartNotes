@@ -12,7 +12,8 @@ export default function NoteItem({ note,updateNote,showAlert }) {
     }
     return (
         <div className='col-md-3 my-3 '>
-            <div className="card ">
+            <div className="card " style={{boxShadow:"0px 0px 10px rgba(0, 0, 0, 0.100)"}}>
+
                 <h6 className="card-header">{note.title}</h6>
                 <div className="card-body">
                     

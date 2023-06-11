@@ -7,11 +7,12 @@ function Alert(props) {
          bgcolor="rgb(37, 255, 182)"
     }
     
-
+        
     let styles = { height: "2.4em", 
-    backgroundColor: bgcolor,
     alignItems: "center", 
-    paddingLeft: "5%" }
+    paddingLeft: "5%",
+    backgroundColor:bgcolor,
+}
 
     return (
         <div style={{ height: '10px' }}>
